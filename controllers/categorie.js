@@ -32,6 +32,18 @@ function readCategories(req, res) {
     });
  }
 
+ function readCategories_wboutique(req, res) {
+
+    let Categorie = require("../models/categorie");
+
+    Categorie.find({boutiqueID : req.params.id})
+    .then((categories) => {
+        res.status(200).json(categories);
+    }, (err) => {
+        res.status(500).json(err);
+    });
+ }
+
  //Testée
 function readCategorie(req, res) {
 
@@ -78,6 +90,7 @@ function deleteCategorie(req, res) {
 
 module.exports.create = createCategorie;
 module.exports.reads = readCategories;
+module.exports.reads_wboutique = readCategories_wboutique;
 module.exports.read = readCategorie;
 module.exports.delete = deleteCategorie;
 module.exports.update = updateCategorie;

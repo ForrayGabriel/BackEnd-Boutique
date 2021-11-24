@@ -18,6 +18,12 @@ router.get("/categories", (req, res) => {
 
 });
 
+router.get("/categories/:id", (req, res) => {
+    
+    controller.reads_wboutique(req, res);
+
+});
+
 router.get("/categorie/:id", (req, res) => {
     
     controller.read(req, res);

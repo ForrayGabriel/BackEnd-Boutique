@@ -32,6 +32,18 @@ function readProduits(req, res) {
     });
  }
 
+ function readProduits_wcategorie(req, res) {
+
+    let Produit = require("../models/produit");
+
+    Produit.find({categorieID : req.params.id})
+    .then((produits) => {
+        res.status(200).json(produits);
+    }, (err) => {
+        res.status(500).json(err);
+    });
+ }
+
 function readProduit(req, res) {
 
     let Produit = require("../models/produit");
@@ -77,6 +89,7 @@ function deleteProduit(req, res) {
 
 module.exports.create = createProduit;
 module.exports.reads = readProduits;
+module.exports.reads_wcategorie = readProduits_wcategorie;
 module.exports.read = readProduit;
 module.exports.delete = deleteProduit;
 module.exports.update = updateProduit;
